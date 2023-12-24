@@ -4,6 +4,7 @@ import { validateUrl } from "../EditorUtils";
 interface Props {
   visible: boolean;
   onSubmit(link: linkOption): void;
+  initialState: linkOption;
 }
 
 export type linkOption = {
@@ -16,7 +17,11 @@ const defaultLink = {
   openInNewTab: false,
 };
 
-const LinkForm: FC<Props> = ({ visible, onSubmit }): JSX.Element | null => {
+const LinkForm: FC<Props> = ({
+  visible,
+  onSubmit,
+  initialState,
+}): JSX.Element | null => {
   const [link, setLink] = useState<linkOption>(defaultLink);
 
   const handleSubmit = () => {
